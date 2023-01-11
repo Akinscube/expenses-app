@@ -1,0 +1,22 @@
+.landing-page{
+    display: flex;
+}
+
+.hero-section {
+    flex: 1 0 auto;
+    height: 100vh;
+    min-height: 100vh;
+    position: relative;
+    background-color: #effefa;
+    /* background: linear-gradient(180deg, #e7e7e7 0%, #eafffa 100% ); */
+}
+
+.hero-inner-wrapper {
+    padding: 24px;
+    position: relative;
+}
+
+.hero-image {
+    width: 600px;
+    position: absolute;
+}

@@ -1,0 +1,91 @@
+.navbar {
+    margin: 30px auto 0;
+    text-align: center;
+}
+
+
+.login-btn, .register-btn {
+    margin: 40px auto;
+    height: 20px;
+    border: 1px solid #7ee8cc;
+    border-radius: 12px;
+    width: 240px;
+    padding: 13px 15px;
+    text-align: left;
+    font-size: 13px;    
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: 1s all;
+}
+
+.login-btn:hover, .register-btn:hover {
+    border: 2px solid rgb(61, 61, 191);
+    transition: 1s all;
+
+}
+
+.navbar a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+
+.login-form {
+    display: block;
+}
+
+.email-input, .password-input, .phone-input {
+    margin: 20px auto;
+    height: 20px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #7ee8cc;
+    border-radius: 12px;
+    width: 240px;
+    padding: 13px 15px;
+    text-align: left;
+    font-size: 13px;  
+    background-color: transparent;
+    outline: none;
+    caret-color: #7ee8cc ;
+    color: #fff;
+}
+
+.login-register-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.cancel-btn {
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+}
+
+.cancel-btn:hover {
+    text-decoration: underline;
+    transition: 0.3 all;
+}
+
+
+.next-btn {
+    background-color: #1d9a79;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+.next-btn:hover {
+    background-color: #48c1a1;
+    transition: 0.3 all;
+}
