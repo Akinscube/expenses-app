@@ -1,9 +1,19 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "../../assets/styles/components/navbar.css";
+import { handleLogin, handleSignup } from "../../helper/firebase/transactions/auth";
 
-const Navbar = () => {
-    const [isLogin, setIsLogin] = useState(false)
-    const [isRegister, setIsRegister] = useState(false)
+const Navbar = (props) => {
+  const { input, handleInputChange, setInput } = props
+
+  const userStatus = useSelector(state => state.auth.userStatus)
+  const dispatch = useDispatch()
+
+  const customSignupHook = handleSignup(dispatch)
+  const customLoginHook = handleLogin(dispatch)
+
+  const [isLogin, setIsLogin] = useState(false)
+  const [isRegister, setIsRegister] = useState(false)
   const [styleX, setstyleX] = useState({
     display: "block",
     fill: "none",
@@ -66,24 +76,28 @@ const Navbar = () => {
         </div>
         ) : isLogin ? (
         <div className="login-form">
-            <input type="email" className="email-input" name="email" required placeholder="Email"/>
-            <input type="password" placeholder="Password" className="password-input" name="password" required />
+          <form>
+            <input type="email" className="email-input" onChange={handleInputChange} name="email" required placeholder="Email"/>
+            <input type="password" placeholder="Password" onChange={handleInputChange} className="password-input" name="password" required />
             
             <div className="login-register-actions">
                 <button onClick={toggleLogin}className="cancel-btn" type="submit">Cancel</button>
-                <button className="next-btn" type="submit">Next</button>
+                <button className="next-btn" onClick={(e) => customLoginHook(e, input.email, input.password, userStatus)} type="submit">Next</button>
             </div>
+          </form>
         </div>
         ) : isRegister ? (
         <div className="register-form">
-            <input type="email" className="email-input" name="email" required placeholder="Email"/>
-            <input type="password" className="password-input" name="password" placeholder="Password" required />
-            <input type="tel" placeholder="Phone Number (optional)" className="phone-input" name="phoneNumber" />
+          <form>
+            <input type="text" placeholder="Nickname" onChange={handleInputChange} className="nickname-input" name="nickname"  required/>
+            <input type="email" className="email-input" onChange={handleInputChange} name="email" required placeholder="Email"/>
+            <input type="password" className="password-input" onChange={handleInputChange} name="password" placeholder="Password" required />
 
             <div className="login-register-actions">
                 <button onClick={toggleRegister} className="cancel-btn" type="submit">Cancel</button>
-                <button className="next-btn" type="submit">Next</button>
+                <button className="next-btn" onClick={(e) => customSignupHook(e, input.email, input.password, input.nickname, userStatus)} type="submit">Next</button>
             </div>
+          </form>
         </div>
         ) : null}
         

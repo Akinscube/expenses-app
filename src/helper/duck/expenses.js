@@ -6,19 +6,20 @@ const expensesSlice = createSlice({
   name: "expenses",
   initialState,
   reducers: {
-    updateExpenseSuccess: (state, action) => {
+    updateExpensesSuccess: (state, action) => {
       state.expensesStatus.expenses = action.payload;
       state.expensesStatus.code = "";
     },
-    updateExpenseFailed: (state, action) => {
+    updateExpensesFailed: (state, action) => {
       state.expensesStatus.expenses = action.payload;
-      state.expensesStatus.code = action.payload.code;
+      state.expensesStatus.code = action.payload;
     },
   },
 });
 
-export const { updateExpenseSuccess, updateExpenseFailed } =
+export const { updateExpensesSuccess, updateExpensesFailed } =
   expensesSlice.actions;
 
+export const expensesAction = expensesSlice.actions;
 
-export default expensesSlice
+export default expensesSlice;

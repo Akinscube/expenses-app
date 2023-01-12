@@ -1,11 +1,14 @@
 import Navbar from "./navbar/navbar";
 import "../assets/styles/components/sidebar.css"
 import logo from "../assets/images/logo-2.png"
+import { useInputChange } from "../custom-hook/useform";
+
 
 
 
 
 const Sidebar = () => {
+    const [input, handleInputChange, setInput] = useInputChange();
 
     return (
         <div className="sidebar">
@@ -16,7 +19,7 @@ const Sidebar = () => {
                             <img className="logo-icon" src={logo} alt="expense logo" />
                             <p>Welcome to ExpensePro!</p>
                         </div>
-                        <Navbar />
+                        <Navbar setInput={setInput} input={input} handleInputChange={handleInputChange}/>
                     </div>
                     
                 </div>

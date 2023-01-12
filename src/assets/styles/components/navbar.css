@@ -36,7 +36,7 @@
     display: block;
 }
 
-.email-input, .password-input, .phone-input {
+.email-input, .password-input, .nickname-input {
     margin: 20px auto;
     height: 20px;
     border-top: none;

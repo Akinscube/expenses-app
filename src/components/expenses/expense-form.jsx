@@ -5,8 +5,8 @@ import DatePicker from "../date-picker";
 const ExpenseForm = (props) => {
     const {setIsDisabled, input, handleInputChange} = props
     
-    const isIncomplete = !input.title || !input.total 
-    console.log(isNaN(input.title))
+    const isIncomplete = !input.title || !input.amount || isNaN(input.amount.replace(/,/g, ""))
+   
     useEffect(() => {
         setIsDisabled(isIncomplete)
       }, [isIncomplete])
@@ -22,8 +22,8 @@ const ExpenseForm = (props) => {
         <DatePicker name={"date"} onChange={handleInputChange}/>
       </div>
       <div>
-        <label htmlFor="total">Total*</label>
-        <input type="text" name="total" required onChange={handleInputChange} />
+        <label htmlFor="amount">Amount*</label>
+        <input type="text" name="amount" required onChange={handleInputChange} />
       </div>
       
     </div>

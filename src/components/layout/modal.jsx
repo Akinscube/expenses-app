@@ -1,13 +1,18 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "../../assets/styles/components/modal.css";
+import { saveExpense } from "../../helper/firebase/transactions/expenses";
 
 const Modal = (props) => {
-  const {isDisabled, handleSave, children } = props;
-  const [isOpen, setIsOpen] = useState(false);
-  
+  const {isDisabled, input, setInput, children, toggleModal, isOpen } = props;
 
-  const toggleModal = () => setIsOpen(!isOpen);
-  
+  const dispatch = useDispatch()
+  const customSaveHook = saveExpense(dispatch)
+
+  const userStatus = useSelector(state => state.auth.userStatus)
+
+
+  console.log(input)
 
   return (
     <div>
@@ -24,16 +29,16 @@ const Modal = (props) => {
             <div className="modal-body">{children}</div>
             <div className="modal-footer">
               {isDisabled ? (
-                <button form="form-id" type="submit" className="modal-save">
+                <button form="form-id" disabled className="modal-save">
                   Save
                 </button>
               ) : (
                 <button
                   form="form-id"
                   type="submit"
-                  onClick={() => {
+                  onClick={(e) => {
                     toggleModal();
-                    handleSave();
+                    customSaveHook(e, input.title, input.date, input.amount, userStatus.user.uid, setInput)
                   }}
                   className="modal-save"
                 >
