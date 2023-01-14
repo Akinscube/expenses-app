@@ -1,12 +1,13 @@
 import { useState } from "react";
 import "../../assets/styles/components/expenses.css"
-import { useInputChange } from "../../custom-hook/useform";
-import Modal from "../layout/modal";
+
+import Modal from "../modal";
 import Expense from "./expense";
 import ExpenseForm from "./expense-form";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 import { updateExpensesSuccess } from "../../helper/duck/expenses";
+import { useInputChange } from "../../custom-hook/useform";
 
 
 
@@ -38,7 +39,7 @@ const Expenses = () => {
 
     
     
-    const expensesArray = Array.from(expenses).map(expense => +expense.amount)
+    const expensesArray = expenses.map(expense => +expense.amount)
     let totalMonthExpenses = 0
     let i=0;
     while(i <= (expensesArray.length - 1)){
@@ -47,7 +48,7 @@ const Expenses = () => {
         i++;
     }
 
-    const sortedExpenses = Array.from(expenses).slice().sort((a, b) => {
+    const sortedExpenses = expenses.slice().sort((a, b) => {
         if(a.date < b.date) return -1;
         if(a.date > b.date) return 1;
         return 0;
@@ -71,9 +72,9 @@ const Expenses = () => {
             <div className="expenses-content">
                 {/* <img style={{width:"700px"}} src={require("../../assets/images/hero-art.png")} alt="" /> */}
                 {sortedExpenses.map(expense => (
-                    <Expense toggleModal={toggleModal} key={expense.expenseId} date={expense.date} title={expense.title} amount={expense.amount} />
+                    <Expense toggleModal={toggleModal} key={expense.expenseId} id={expense.expenseId} date={expense.date} title={expense.title} amount={expense.amount} />
                 ))}
-                
+                {Object.keys(sortedExpenses).length === 0 ? (<p className="empty-content">You have no expenses yet for {new Date().toLocaleString("en-us", {month: "long"} )}.</p>) : null}
             </div>
 
             <div className="expenses-footer">

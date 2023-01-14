@@ -5,7 +5,7 @@
 
 
 .login-btn, .register-btn {
-    margin: 40px auto;
+    margin: 60px auto;
     height: 20px;
     border: 1px solid #7ee8cc;
     border-radius: 12px;
@@ -13,16 +13,17 @@
     padding: 13px 15px;
     text-align: left;
     font-size: 13px;    
-    font-weight: 600;
+    
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transition: 1s all;
+    transition: 200ms all;
 }
 
 .login-btn:hover, .register-btn:hover {
     border: 2px solid rgb(61, 61, 191);
-    transition: 1s all;
+    font-weight: 600;
+    transition: 200ms all;
 
 }
 

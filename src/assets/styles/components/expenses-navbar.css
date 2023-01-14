@@ -1,0 +1,86 @@
+.navbar {
+    margin: 30px auto 0;
+    text-align: center;
+}
+
+
+.expenses-btn, .report-btn {
+    /* margin: 40px auto; */
+    height: 40px;
+    width: calc(100% - 100px);
+    padding: 20px 50px;
+    text-align: left;
+    font-size: 0.9rem;    
+    font-weight: 400;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: 1s all;
+    cursor: pointer;
+    text-decoration: none;
+    color: #7d8b8f;
+}
+
+.expenses-icon, .report-icon {
+    fill: #7d8b8f;
+}
+
+.expenses-tab {
+    margin-left: 30px;
+}
+
+.expenses-btn:hover .expenses-icon  {
+    fill: #00dda3;
+    transition: 400ms all;  
+}
+
+.expenses-btn:hover {
+    /* font-weight: 800; */
+    color: #fff;
+    transition: 400ms all;  
+}
+
+.report-tab {
+    margin-left: 30px;
+}
+
+.report-btn:hover .report-icon  {
+    fill: #00dda3;
+    transition: 400ms all;
+}
+
+.report-btn:hover  {
+    /* font-weight: 800; */
+    color: #fff;
+    transition: 400ms all;
+}
+
+
+
+
+@media (max-width: 1200px) {
+    .report-tab, .expenses-tab {
+        display: none;
+    }
+
+    .report-btn, .expenses-btn {
+        padding: 20px;
+        justify-content: center;
+        width: auto;
+    }
+    .expenses-btn{
+        margin-top: 127px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

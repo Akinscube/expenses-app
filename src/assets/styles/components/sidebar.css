@@ -5,8 +5,9 @@
     padding: 0;
     max-width: 400px;
     margin: 0 0;
-    height: 100vh;
+    /* height: 100%; */
     text-align: center;
+    z-index: 1;
 }
 
 .logo-icon-wrapper {
@@ -23,24 +24,30 @@
 
 .sidebar-inner-wrapper {
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
-    margin: auto 40px;
-    height: 100%;
+    /* margin: auto 40px; */
+    height: 100vh;
     
 }
 
 .sidebar-actions {
-    flex: 1 0 auto;
+    flex: 0 0 auto;
+    margin-top: 15vh;
+    margin-bottom: 20px;
 }
 
 .inner-action-wrapper {
-    margin: 57% 0;
+    /* margin: 57% 0; */
+    margin: 0 40px;
 }
 
 .sidebar-footer {
     height: 50px;
     color: #fff;
-    padding-bottom: 40px;
+    /* padding-bottom: 40px; */
+    background-color: #010114;
+    padding: 40px 0;
     
 }
 

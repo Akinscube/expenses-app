@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom"
 import "../../assets/styles/components/navbar.css";
 import { handleLogin, handleSignup } from "../../helper/firebase/transactions/auth";
 
@@ -8,10 +9,13 @@ const Navbar = (props) => {
 
   const userStatus = useSelector(state => state.auth.userStatus)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const customSignupHook = handleSignup(dispatch)
-  const customLoginHook = handleLogin(dispatch)
+  const customLoginHook = handleLogin(dispatch, navigate )
 
+
+  const submitButtonRef = useRef(null);
   const [isLogin, setIsLogin] = useState(false)
   const [isRegister, setIsRegister] = useState(false)
   const [styleX, setstyleX] = useState({
@@ -32,6 +36,15 @@ const Navbar = (props) => {
   const toggleRegister = () => {
     setIsRegister(!isRegister)
   }
+
+  
+
+  const handleSubmit = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      submitButtonRef.current.click();
+    }
+  };
 
   return (
     <>
@@ -76,26 +89,26 @@ const Navbar = (props) => {
         </div>
         ) : isLogin ? (
         <div className="login-form">
-          <form>
+          <form onKeyDown={handleSubmit}>
             <input type="email" className="email-input" onChange={handleInputChange} name="email" required placeholder="Email"/>
             <input type="password" placeholder="Password" onChange={handleInputChange} className="password-input" name="password" required />
             
             <div className="login-register-actions">
                 <button onClick={toggleLogin}className="cancel-btn" type="submit">Cancel</button>
-                <button className="next-btn" onClick={(e) => customLoginHook(e, input.email, input.password, userStatus)} type="submit">Next</button>
+                <button className="next-btn" ref={submitButtonRef} onClick={(e) => customLoginHook(e, input.email, input.password, userStatus)} type="submit">Next</button>
             </div>
           </form>
         </div>
         ) : isRegister ? (
         <div className="register-form">
-          <form>
+          <form onKeyDown={handleSubmit}>
             <input type="text" placeholder="Nickname" onChange={handleInputChange} className="nickname-input" name="nickname"  required/>
             <input type="email" className="email-input" onChange={handleInputChange} name="email" required placeholder="Email"/>
             <input type="password" className="password-input" onChange={handleInputChange} name="password" placeholder="Password" required />
 
             <div className="login-register-actions">
                 <button onClick={toggleRegister} className="cancel-btn" type="submit">Cancel</button>
-                <button className="next-btn" onClick={(e) => customSignupHook(e, input.email, input.password, input.nickname, userStatus)} type="submit">Next</button>
+                <button className="next-btn"  ref={submitButtonRef} onClick={(e) => customSignupHook(e, input.email, input.password, input.nickname, userStatus)} type="submit">Next</button>
             </div>
           </form>
         </div>

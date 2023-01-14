@@ -7,15 +7,18 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
 } from "firebase/auth";
+
 import app from "..";
 import { db } from "..";
-import { userActions } from "../../duck/auth";
+import { userActions, userSignOutFailed, userSignOutSuccess } from "../../duck/auth";
 import { FirebaseError } from "firebase/app"
-import { collection, query, where, addDoc } from "firebase/firestore"
+import { collection, getDocs, query, where, addDoc } from "firebase/firestore"
+import { updateExpensesSuccess } from "../../duck/expenses";
 
 const auth = getAuth(app);
 
-export const handleLogin = dispatch => async(e, email, password, userStatus) => {
+
+export const handleLogin = (dispatch, navigate) => async(e, email, password, userStatus) => {
     e.preventDefault()
     dispatch(userActions.userLogin)
 
@@ -23,12 +26,37 @@ export const handleLogin = dispatch => async(e, email, password, userStatus) => 
         const popup = await signInWithEmailAndPassword(auth, email, password)
 
         if(popup.user){
-            dispatch(userActions.userLoginSuccess({...userStatus, user: popup.user}))
+            const trx = query(collection(db, "users"), where("uid", "==", popup.user.uid))
+            const querySnapshot = await getDocs(trx)
+            console.log(querySnapshot)
+            let userData = {}
+            querySnapshot.forEach(doc => {
+                userData = { ...doc.data() }
+            })
+            console.log(userData.nickname)
+            setTimeout(async() =>  {
+            dispatch(userActions.userLoginSuccess({...userStatus, user: popup.user, userNickname: userData.nickname}))
+        
+            const trx = query(collection(db, "Users-Expenses"), where("uid", "==", popup.user.uid))
+            const querySnapshot = await getDocs(trx)
+            console.log(querySnapshot)
+            let userExpenses = []
+            querySnapshot.forEach(doc => {
+                userExpenses.push({ ...doc.data() })
+            })
+                dispatch(updateExpensesSuccess(userExpenses))
+                await navigate('/dashboard')
+            }, 500);
+            
         }
     } catch (error) {
-        dispatch(userActions.userLoginFailed(error))
+        setTimeout(() => {
+            dispatch(userActions.userLoginFailed(error))
+        }, 500);
+        
     }
 
+    
 
 }
 
@@ -70,4 +98,15 @@ export const handleSignup = (dispatch) => async(e, email, password, nickname, us
 
         dispatch(userActions.userRegistrationFailed(error))}
     
+}
+
+export const handleSignOut = (dispatch, navigate) =>  async() => {
+    try {
+        const popup = await signOut(auth)
+        dispatch(userSignOutSuccess())
+        await navigate('/')
+        return popup
+    } catch (error) {
+        dispatch(userSignOutFailed(error))
+    }
 }

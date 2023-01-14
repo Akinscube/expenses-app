@@ -26,6 +26,11 @@
     font-weight: 800;
 }
 
+.empty-content {
+    color: #7d8b8f;
+    font-size: 14px;
+}
+
 
 .expenses-content {
     max-height: calc(100vh - 80px);

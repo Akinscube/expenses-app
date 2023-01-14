@@ -4,6 +4,7 @@ import {
   doc,
   query,
   getDocs,
+  deleteDoc,
   where,
 } from "firebase/firestore";
 import { updateExpensesSuccess, updateExpensesFailed } from "../../duck/expenses";
@@ -69,4 +70,18 @@ export const updatedExpense = dispatch => async (uid, expenseId) => {
 
 export const deleteExpense = dispatch => async (uid, expenseId) => {
     
+    try {
+        await deleteDoc(doc(db, "Users-Expenses", expenseId))
+        const trx = query(collection(db, "Users-Expenses"), where("uid", "==", uid))
+        const querySnapshot = await getDocs(trx)
+        console.log(querySnapshot)
+        let userExpenses = []
+        querySnapshot.forEach(doc => {
+            userExpenses.push({ ...doc.data() })
+        })
+
+        dispatch(updateExpensesSuccess(userExpenses))
+    } catch (error) {
+        dispatch(updateExpensesFailed(error))
+    }
 }

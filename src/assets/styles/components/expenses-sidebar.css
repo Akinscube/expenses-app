@@ -1,0 +1,142 @@
+.expenses-sidebar {
+    width: 300px;
+    background: rgb(9, 9, 75);
+    background: linear-gradient(180deg, #07073e 0%, #010114 50% );
+    padding: 0;
+    max-width: 400px;
+    margin: 0 0;
+    /* height: 100%; */
+    text-align: center;
+}
+
+
+
+
+
+.expenses-sidebar-inner-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    /* margin: auto 40px; */
+    height: 100vh;
+    
+}
+
+.expenses-sidebar-actions {
+    flex: 1 0 auto;
+    margin-top: 5vh;
+    margin-bottom: 20px;
+}
+
+/* .expenses-inner-action-wrapper {
+    margin: 57% 0;
+    margin: 0 40px;
+} */
+
+.expenses-sidebar-footer {
+    flex: 0 0 auto;
+    /* height: 50px; */
+    color: #fff;
+    padding-bottom: 40px;
+    background-color: #010114;
+    padding: 40px 0 30px;
+    
+}
+
+.expenses-logo {
+    width: 170px;
+    /* margin: 0 0 10px; */
+}
+
+.expenses-sidebar-agreement {
+    margin: 0 auto;
+    max-width: 250px;
+    font-size: 0.6rem;
+}
+
+
+.name-section {
+    margin-top: 40px;
+    flex: 0 0 auto;
+    color: #fff     
+}
+
+.logout-btn {
+    margin: 0 auto 45px;
+    height: 20px;
+    border: 1px solid #7ee8cc;
+    border-radius: 12px;
+    width: 70px;
+    padding: 10px;
+    text-align: center;
+    font-size: 11px;    
+    font-weight: 600;
+    cursor: pointer;
+    
+    transition: 1s all;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* text-decoration: none; */
+    color: #fff;
+}
+
+.logout-btn-small {
+    display: none;
+}
+
+.logout-btn:hover {
+    background-color: #00dda3;
+    color: #494949;
+    border: 1px solid #00dda3;
+}
+
+.logo-icon-small {
+    display: none;
+}
+
+
+
+@media (min-width: 900px) and (max-width: 1199px) {
+    .expenses-sidebar {
+       max-width: 72px;
+       /* transition: 200ms all; */
+    }
+    .name-section{
+        display: none;
+    }
+    .expenses-logo {
+        display: none;
+    }
+    .logout-btn {
+        display: none;
+    }
+    .logout-btn-small {
+        display: block;
+        fill: #fff;
+        cursor: pointer;
+        transition: 1s all;
+        width: 33px;
+        margin: 0 0 0 14px;
+        transform: rotate(180deg);
+        transition: 300ms all;
+
+    }
+
+    .logout-btn-small:hover {
+        fill: #00dda3;
+        transition: 300ms all;
+    }
+    .logo-icon-small {
+        display: block;
+        width: 45px;
+        margin: 50px auto 0;
+    }
+}
+
+@media (max-width: 899px) {
+    .expenses-sidebar{
+        display: none;
+        transition: 300ms all;
+    }
+}

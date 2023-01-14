@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../../assets/styles/components/modal.css";
-import { saveExpense } from "../../helper/firebase/transactions/expenses";
+import "../assets/styles/components/modal.css";
+import { saveExpense } from "../helper/firebase/transactions/expenses";
 
 const Modal = (props) => {
   const {isDisabled, input, setInput, children, toggleModal, isOpen } = props;
+
 
   const dispatch = useDispatch()
   const customSaveHook = saveExpense(dispatch)
@@ -16,7 +17,7 @@ const Modal = (props) => {
 
   return (
     <div>
-      <button onClick={toggleModal}>New Expense</button>
+      <button className="new-expense" onClick={toggleModal}>+ New Expense</button>
       {isOpen && (
         <div className="modal">
           <div className="modal-content">

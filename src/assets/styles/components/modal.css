@@ -79,4 +79,19 @@
     font-size: 13px;
     cursor: pointer;
   }
+
+  .new-expense {
+    background-color: #65e1c0;
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-weight: 700;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .new-expense:hover {
+    background-color: #00dda3;
+    transition: 300ms all;
+  }
   
