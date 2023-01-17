@@ -109,6 +109,9 @@
     .expenses-heading {
         margin-left: 20px;
     }
+    .expenses{
+        max-width: 100vw;
+    }
 }
 
 

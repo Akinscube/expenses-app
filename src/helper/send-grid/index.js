@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const sendgridApiKey =
-  "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";
+const sendgridApiKey = process.env.SENDGRID_API_KEY;
 const sendgridEndpoint =
   "https://cors-anywhere.herokuapp.com/https://api.sendgrid.com/v3/mail/send";
 
@@ -13,7 +12,7 @@ export const sendEmail = async () => {
 
       headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer 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",
+          "Authorization": `Bearer ${sendgridApiKey}`,
       },
       data: {
         personalizations: [

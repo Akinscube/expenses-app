@@ -64,3 +64,10 @@
     fill: firebrick;
     transition: 300ms all;
 }
+
+
+@media (max-width: 899px) {
+    .expense-total{
+        text-align: center;
+    }
+}

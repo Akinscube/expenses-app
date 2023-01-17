@@ -141,6 +141,8 @@
     }
     .show{
         display: block;
+        position: fixed;
         max-width: 250px;
+        z-index: 3;
     }
 }
