@@ -8,7 +8,8 @@ import ExpensesNavbar from "../navbar/expenses-navbar";
 
 
 
-const ExpensesSidebar = () => {
+const ExpensesSidebar = (props) => {
+    const { isSidebar, handleReport, handleExpenses } = props
     const [input, handleInputChange, setInput] = useInputChange();
 
     const navigate = useNavigate()
@@ -18,7 +19,7 @@ const ExpensesSidebar = () => {
 
     console.log(userStatus.userNickname)
     return (
-        <div className="expenses-sidebar">
+        <div className={isSidebar? "expenses-sidebar show" :"expenses-sidebar"}>
             <div className="expenses-sidebar-inner-wrapper">
                 <div className="name-section">
                     <h3>Hi, {userStatus.userNickname}</h3>
@@ -27,7 +28,7 @@ const ExpensesSidebar = () => {
                 <div className="expenses-sidebar-actions">
                     <div className="expenses-inner-action-wrapper">
                         
-                        <ExpensesNavbar />
+                        <ExpensesNavbar handleExpenses={handleExpenses} handleReport={handleReport} />
                     </div>
                     
                 </div>
@@ -36,7 +37,7 @@ const ExpensesSidebar = () => {
                 <div className="expenses-sidebar-footer">
                     <div onClick={() => customSignOutHook()} className="logout-btn">
     
-                        <span className="report">LOGOUT</span>
+                        <span className="logout">LOGOUT</span>
                     </div>
                     <svg version="1.0" onClick={() => customSignOutHook()}  className="logout-btn-small" xmlns="http://www.w3.org/2000/svg" width="40.000000pt" height="40.000000pt" viewBox="0 0 40.000000 40.000000" preserveAspectRatio="xMidYMid meet">
                         <g transform="translate(0.000000,40.000000) scale(0.003906,-0.003906)"  stroke="none">

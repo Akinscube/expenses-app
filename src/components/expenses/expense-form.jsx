@@ -14,16 +14,16 @@ const ExpenseForm = (props) => {
 
   return (
     <div className="expense-form">
-      <div>
-        <label htmlFor="title">Title*</label>
-        <input type="text" required name="title" onChange={handleInputChange} />
+      <div className="expense-input">
+        <label className="form-label" htmlFor="title">Title*</label>
+        <input className="form-input" type="text" required name="title" onChange={handleInputChange} />
       </div>
-      <div>
+      <div className="expense-input">
         <DatePicker name={"date"} onChange={handleInputChange}/>
       </div>
-      <div>
-        <label htmlFor="amount">Amount*</label>
-        <input type="text" name="amount" required onChange={handleInputChange} />
+      <div className="expense-input">
+        <label className="form-label" htmlFor="amount">Amount*</label>
+        <input className="form-input" type="text" name="amount" required onChange={handleInputChange} />
       </div>
       
     </div>

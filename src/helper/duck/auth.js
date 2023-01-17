@@ -27,7 +27,7 @@ const userSlice = createSlice({
             state.userStatus.loading = false
             state.userStatus.user = action.payload.user
             state.userStatus.userNickname = action.payload.userNickname
-            state.userStatus.code = ""
+            state.userStatus.code = "auth/Login-Successful"
         },
         userLoginFailed: (state, action) => {
             state.userStatus.loading = false
@@ -37,12 +37,14 @@ const userSlice = createSlice({
         userSignOutSuccess: state => {
             state.userStatus.loading = false
             state.userStatus.user = null
-            state.userStatus.code = ""
+            state.userStatus.code = "auth/SignOut-Successful"
+            state.userStatus.userNickname = ""
         },
         userSignOutFailed: (state, action) => {
             state.userStatus.loading = false
             state.userStatus.user = null
             state.userStatus.code = action.payload?.code
+            
         }
         
     }

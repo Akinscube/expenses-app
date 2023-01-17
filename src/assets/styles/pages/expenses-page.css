@@ -2,3 +2,56 @@
     display: flex;
     
 }
+
+.menu-bars {
+    display: none;
+}
+
+
+.exit-bar {
+    display: none;
+}
+
+
+
+@media (max-width: 899px) {
+    .menu-bars {
+        display: none;
+        position: absolute;
+        font-size: 1.2rem;
+        left: 0px;
+        top: 0px;
+        margin-left: 17px;
+        margin-top: 17px;
+        background: none;
+        z-index: 4;
+      }
+      .exit-bar {
+        display: none;
+        position: absolute;
+        font-size: 1.2rem;
+        color: #fff;
+        left: 0px;
+        top: 0px;
+        margin-left: 16px;
+        margin-top: 17px;
+        background: none;
+        z-index: 4;
+        
+      }
+      .exit {
+        stroke-width: 50;
+      }
+      .active-button {
+        display: inline-block;
+      }
+
+      .sidebar-bg {
+        display: block;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.522);
+        z-index: 3;
+      }
+}
+

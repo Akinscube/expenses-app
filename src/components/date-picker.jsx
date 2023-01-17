@@ -19,8 +19,8 @@ const DatePicker = (props) => {
 
   return (
     <div>
-    <label htmlFor={name}>{name}</label>
-    <input type="date" name={name}  value={date.toISOString().substr(0, 10)} min={`${new Date().getFullYear()}-${new Date().getMonth() + 1}-01`} max={new Date().toISOString().substr(0, 10)} onChange={handleChange} />
+    <label className="form-label" htmlFor={name}>Date*</label>
+    <input className="form-input" type="date" name={name}  value={date.toISOString().substr(0, 10)} min={`${new Date().getFullYear()}-${new Date().getMonth() + 1}-01`} max={new Date().toISOString().substr(0, 10)} onChange={handleChange} />
     </div>
   );
 };

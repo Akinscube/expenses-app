@@ -22,7 +22,7 @@ const Modal = (props) => {
         <div className="modal">
           <div className="modal-content">
             <div className="modal-header">
-              <h6>New Expense</h6>
+              <h3 className="modal-heading">New Expense</h3>
               <p className="modal-exit" onClick={toggleModal}>
                 &times;
               </p>

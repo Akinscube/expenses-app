@@ -10,15 +10,15 @@ import {
 import { updateExpensesSuccess, updateExpensesFailed } from "../../duck/expenses";
 import { db } from "..";
 
-const transaction = async (myCollection, uid) => {
-    const trx = query(collection(db, myCollection), where("uid", "==", uid))
-    const querySnapshot = await getDocs(trx)
-    let userExpenses = {}
-    querySnapshot.forEach(doc => {
-        userExpenses = { ...doc.data(), id: doc.id }
-    })
-    return userExpenses
-}
+// const transaction = async (myCollection, uid) => {
+//     const trx = query(collection(db, myCollection), where("uid", "==", uid))
+//     const querySnapshot = await getDocs(trx)
+//     let userExpenses = {}
+//     querySnapshot.forEach(doc => {
+//         userExpenses = { ...doc.data(), id: doc.id }
+//     })
+//     return userExpenses
+// }
 
 export const saveExpense = dispatch => async (e,  title, date, amount, uid, setInput) => {
     // e.preventDefault()

@@ -49,6 +49,7 @@
     padding: 13px 15px;
     text-align: left;
     font-size: 13px;  
+    display: block;
     background-color: transparent;
     outline: none;
     caret-color: #7ee8cc ;
@@ -89,4 +90,21 @@
 .next-btn:hover {
     background-color: #48c1a1;
     transition: 0.3 all;
+}
+
+
+@media (max-width: 1200px) {
+
+    
+
+    .email-input, .password-input, .nickname-input {
+        margin: 50px auto 30px;
+    }
+
+    .login-register-actions {
+        max-width: 240px;
+        margin: 50px auto 0;
+        
+    }
+    
 }

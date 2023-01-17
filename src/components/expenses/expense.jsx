@@ -48,9 +48,11 @@ const Expense = (props) => {
           {/* <button className="expense-edit" onClick={toggleModal}>edit</button> */}
           <div
             className="expense-delete"
-            onClick={() => customDeleteHook(userStatus.user.uid, id)}
+            
           >
             <svg
+              className="delete-icon"
+              onClick={() => customDeleteHook(userStatus.user.uid, id)}
               version="1.0"
               xmlns="http://www.w3.org/2000/svg"
               width="20.800000pt"

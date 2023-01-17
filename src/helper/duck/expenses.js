@@ -14,10 +14,17 @@ const expensesSlice = createSlice({
       state.expensesStatus.expenses = action.payload;
       state.expensesStatus.code = action.payload;
     },
+    emptyExpensesSuccess: state => {
+      state.expensesStatus.expenses = [];
+      state.expensesStatus.code = "";
+    },
+    emptyExpensesFailed: (state, action) => {
+      state.expensesStatus.code = action.payload;
+    }
   },
 });
 
-export const { updateExpensesSuccess, updateExpensesFailed } =
+export const { updateExpensesSuccess, updateExpensesFailed, emptyExpensesSuccess, emptyExpensesFailed } =
   expensesSlice.actions;
 
 export const expensesAction = expensesSlice.actions;

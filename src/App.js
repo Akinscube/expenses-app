@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import './App.css';
 import LandingPage from './pages/landing-page';
 import ExpensesPage from './pages/expenses-page';
-import { ProtectPage } from "./components/protect-page";
+import { ProtectPage } from "./helper/protect-page/protect-page";
 import { useSelector } from "react-redux";
 
 function App() {

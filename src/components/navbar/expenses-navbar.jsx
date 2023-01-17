@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "../../assets/styles/components/expenses-navbar.css";
 
-const ExpensesNavbar = () => {
+const ExpensesNavbar = (props) => {
+  const { handleReport, handleExpenses } = props
 
   const [styleX, setstyleX] = useState({
     display: "block",
@@ -24,7 +25,7 @@ const ExpensesNavbar = () => {
     <>
       <nav className="navbar">
         <div>
-          <div  className="expenses-btn">
+          <div onClick={handleExpenses} className="expenses-btn">
             <svg version="1.0" className="expenses-icon" xmlns="http://www.w3.org/2000/svg" width="20.000000pt" height="20.000000pt" viewBox="0 0 50.000000 50.000000" preserveAspectRatio="xMidYMid meet">
               <g transform="translate(0.000000,50.000000) scale(0.009766,-0.009766)"
                stroke="none">
@@ -52,7 +53,7 @@ const ExpensesNavbar = () => {
             </svg>
             <span className="expenses-tab">Expenses</span>
           </div>
-          <div className="report-btn">
+          <div onClick={handleReport} className="report-btn">
           
             <svg version="1.0" className="report-icon" xmlns="http://www.w3.org/2000/svg" width="18.000000pt" height="18.000000pt" viewBox="0 0 20.000000 20.000000" preserveAspectRatio="xMidYMid meet">
               <g transform="translate(0.000000,20.000000) scale(0.002381,-0.001912)"

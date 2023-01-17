@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../../assets/styles/components/expenses.css"
 
 import Modal from "../modal";
@@ -27,17 +27,7 @@ const Expenses = () => {
 
     const toggleModal = () => setIsOpen(!isOpen);
 
-
-    const handleSave = () => {
-        
-        if(!input.date) {input.date = new Date()}
-        dispatch(updateExpensesSuccess([...expenses, {id: uuidv4(), title:input.title, date:input.date.getTime(), amount:input.amount.replace(/,/g, "")} ]))
-        setInput({})
-    }
-
-
-
-    
+    const currentMonthExpenses = expenses.filter(expense => new Date(expense.date).getMonth())
     
     const expensesArray = expenses.map(expense => +expense.amount)
     let totalMonthExpenses = 0
@@ -54,23 +44,27 @@ const Expenses = () => {
         return 0;
     }) 
 
-    // console.log(sortedExpenses)
-        
 
-    // console.log(expenses)
 
     return (
         <div className="expenses">
             <div className="expenses-header">
-                <h1>Expenses</h1>
+                <h1 className="expenses-heading">Expenses</h1>
                 <Modal isDisabled={isDisabled} isOpen={isOpen} setInput={setInput} toggleModal={toggleModal} input={input}>
                     <form id="form-id">
                         <ExpenseForm input={input} setIsDisabled={setIsDisabled} handleInputChange={handleInputChange} />
                     </form>
                 </Modal>
+                
             </div>
+            <div className="expense-header-data">
+                    <div className="header-date">DATE</div>
+                    <div className="header-title">TITLE</div>
+                    <div className="header-amount">AMOUNT</div>
+                    <div className="expense-actions"></div>
+                </div>
             <div className="expenses-content">
-                {/* <img style={{width:"700px"}} src={require("../../assets/images/hero-art.png")} alt="" /> */}
+            
                 {sortedExpenses.map(expense => (
                     <Expense toggleModal={toggleModal} key={expense.expenseId} id={expense.expenseId} date={expense.date} title={expense.title} amount={expense.amount} />
                 ))}
@@ -82,7 +76,8 @@ const Expenses = () => {
                     <h5>Total {new Date().toLocaleString("en-us", {month: "long"} )} Expenses: ₦{totalMonthExpenses.toLocaleString("en")}</h5>
                 </div>
                 <img className="expenses-footer-logo" src={require("../../assets/images/full-logo.png")} alt="" />
-            </div>        
+            </div>  
+               
         </div>
     )
 }

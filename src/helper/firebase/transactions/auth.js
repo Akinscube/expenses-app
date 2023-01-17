@@ -13,7 +13,8 @@ import { db } from "..";
 import { userActions, userSignOutFailed, userSignOutSuccess } from "../../duck/auth";
 import { FirebaseError } from "firebase/app"
 import { collection, getDocs, query, where, addDoc } from "firebase/firestore"
-import { updateExpensesSuccess } from "../../duck/expenses";
+import { emptyExpensesSuccess, updateExpensesSuccess } from "../../duck/expenses";
+import { sendEmail } from "../../send-grid";
 
 const auth = getAuth(app);
 
@@ -46,13 +47,14 @@ export const handleLogin = (dispatch, navigate) => async(e, email, password, use
             })
                 dispatch(updateExpensesSuccess(userExpenses))
                 await navigate('/dashboard')
-            }, 500);
+                
+            }, 100);
             
         }
     } catch (error) {
         setTimeout(() => {
             dispatch(userActions.userLoginFailed(error))
-        }, 500);
+        }, 100);
         
     }
 
@@ -104,6 +106,7 @@ export const handleSignOut = (dispatch, navigate) =>  async() => {
     try {
         const popup = await signOut(auth)
         dispatch(userSignOutSuccess())
+        dispatch(emptyExpensesSuccess())
         await navigate('/')
         return popup
     } catch (error) {

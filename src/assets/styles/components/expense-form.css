@@ -3,3 +3,22 @@
     font-weight: normal;
     text-align: left;
 }
+
+.expense-input {
+    margin: 16px 0;
+}
+
+.form-label {
+    display: inline-block;
+    width: 80px;
+}
+
+
+.form-input {
+    width: 290px;
+    height: 30px;
+    padding: 5px 10px ;
+    border-radius: 10px;
+    border: 1px solid rgba(126, 126, 126, 0.486);
+}
+
