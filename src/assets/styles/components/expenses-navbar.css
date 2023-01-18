@@ -72,6 +72,14 @@
     transition: 400ms all;
 }
 
+.show-tab {
+    color: #fff !important;
+    font-weight: 500 !important;
+}
+.show-icon {
+    fill: #00dda3 !important;
+}
+
 
 
 
@@ -162,6 +170,8 @@
         color: #fff;
         transition: 400ms all;
     }
+
+    
 }
 
 

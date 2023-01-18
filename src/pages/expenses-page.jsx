@@ -62,12 +62,18 @@ const ExpensesPage = () => {
       {isSidebar ? (
         <ExpensesSidebar
           isSidebar={isSidebar}
+          showBudget={showBudget}
+          showExpenses={showExpenses}
+          showReport={showReport}
           handleExpenses={handleExpenses}
           handleReport={handleReport}
           handleBudget={handleBudget}
         />
       ) : null}
       <ExpensesSidebar
+        showBudget={showBudget}
+        showExpenses={showExpenses}
+        showReport={showReport}
         handleExpenses={handleExpenses}
         handleReport={handleReport}
         handleBudget={handleBudget}

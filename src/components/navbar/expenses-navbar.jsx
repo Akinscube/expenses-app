@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../assets/styles/components/expenses-navbar.css";
 
 const ExpensesNavbar = (props) => {
-  const { handleBudget, handleReport, handleExpenses } = props
+  const { handleBudget, showBudget, showExpenses, showReport, handleReport, handleExpenses } = props
 
   const [styleX, setstyleX] = useState({
     display: "block",
@@ -17,7 +17,7 @@ const ExpensesNavbar = (props) => {
 
 
 
-  
+  console.log(showBudget, showExpenses, showReport)
 
 
 
@@ -26,7 +26,7 @@ const ExpensesNavbar = (props) => {
       <nav className="navbar">
         <div>
           <div onClick={handleExpenses} className="expenses-btn">
-            <svg version="1.0" className="expenses-icon" xmlns="http://www.w3.org/2000/svg" width="20.000000pt" height="20.000000pt" viewBox="0 0 50.000000 50.000000" preserveAspectRatio="xMidYMid meet">
+            <svg version="1.0" className={showExpenses? "expenses-icon show-icon" :"expenses-icon"} xmlns="http://www.w3.org/2000/svg" width="20.000000pt" height="20.000000pt" viewBox="0 0 50.000000 50.000000" preserveAspectRatio="xMidYMid meet">
               <g transform="translate(0.000000,50.000000) scale(0.009766,-0.009766)"
                stroke="none">
                 <path d="M1417 4605 c-222 -152 -213 -148 -312 -143 l-83 3 -116 79 c-131 90
@@ -51,11 +51,11 @@ const ExpensesNavbar = (props) => {
                 835 6 727 -2 808 -4 835 -18z"/>
               </g>
             </svg>
-            <span className="expenses-tab">Expenses</span>
+            <span className={showExpenses? "expenses-tab show-tab": "expenses-tab"}>Expenses</span>
           </div>
           <div onClick={handleReport} className="report-btn">
           
-            <svg version="1.0" className="report-icon" xmlns="http://www.w3.org/2000/svg" width="18.000000pt" height="18.000000pt" viewBox="0 0 20.000000 20.000000" preserveAspectRatio="xMidYMid meet">
+            <svg version="1.0" className={showReport? "report-icon show-icon" :"report-icon"} xmlns="http://www.w3.org/2000/svg" width="18.000000pt" height="18.000000pt" viewBox="0 0 20.000000 20.000000" preserveAspectRatio="xMidYMid meet">
               <g transform="translate(0.000000,20.000000) scale(0.002381,-0.001912)"
                stroke="none">
                 <path d="M695 10050 c-225 -30 -419 -209 -476 -440 -12 -46 -14 -761 -14
@@ -82,11 +82,11 @@ const ExpensesNavbar = (props) => {
               </g>
             </svg>
 
-          <span className="report-tab">Report</span>
+          <span className={showReport? "report-tab show-tab" :"report-tab"}>Report</span>
           </div>
           <div onClick={handleBudget} className="budget-btn">
           
-            <svg version="1.0" className="budget-icon" xmlns="http://www.w3.org/2000/svg" width="20.000000pt" height="20.000000pt" viewBox="0 0 20.000000 20.000000" preserveAspectRatio="xMidYMid meet">
+            <svg version="1.0" className={showBudget? "budget-icon show-icon" :"budget-icon"} xmlns="http://www.w3.org/2000/svg" width="20.000000pt" height="20.000000pt" viewBox="0 0 20.000000 20.000000" preserveAspectRatio="xMidYMid meet">
               <g transform="translate(0.000000,20.000000) scale(0.002041,-0.002066)"  stroke="none">
                 <path d="M4578 9606 c-21 -8 -124 -84 -230 -169 -1834 -1481 -2254 -1825
                 -2282 -1870 -50 -81 -37 -156 42 -235 46 -46 106 -76 149 -75 18 1 52 12 75
@@ -119,7 +119,7 @@ const ExpensesNavbar = (props) => {
 
             </svg>
 
-          <span className="report-tab">Budget</span>
+          <span className={showBudget? "budget-tab show-tab" :"budget-tab"}>Budget</span>
           </div>
           
         </div>
