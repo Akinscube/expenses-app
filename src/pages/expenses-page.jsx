@@ -14,10 +14,18 @@ const ExpensesPage = () => {
   const [showBudget, setShowBudget] = useState(false);
   const [isSidebar, setIsSidebar] = useState(false);
 
-  const showSidebar = () => setIsSidebar(!isSidebar);
+  const showSidebar = () => {
+    setIsSidebar(!isSidebar);
+    if (!isSidebar) {
+        document.getElementById("expenses-content").style.overflowY = "hidden"
+    }
+    else {document.getElementById("expenses-content").style.overflowY = "scroll";}
+};
 
-  if (isSidebar) document.body.style.overflowY = "hidden";
-  else document.body.style.overflowY = "visible";
+
+
+
+
 
   const handleReport = () => {
     setShowReport(true);

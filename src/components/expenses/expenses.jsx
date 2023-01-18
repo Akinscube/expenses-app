@@ -73,7 +73,7 @@ const Expenses = () => {
                     <div className="header-amount">AMOUNT</div>
                     <div className="expense-actions"></div>
                 </div>
-            <div className="expenses-content">
+            <div id="expenses-content" className="expenses-content">
             
                 {currentMonthExpenses.map(expense => (
                     <Expense toggleModal={toggleModal} key={expense.expenseId} id={expense.expenseId} date={expense.date} title={expense.title} amount={expense.amount} />
