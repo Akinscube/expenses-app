@@ -18,6 +18,8 @@
 
     .expenses-page {
         display: block;
+        max-width: 100vw;
+        max-height: 100vh;
     }
     .menu-bars {
         display: none;

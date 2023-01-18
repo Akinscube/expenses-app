@@ -97,7 +97,7 @@ const Report = () => {
     return (
         <div className="report">
             <div className="report-header">
-                <h1>Report</h1>
+                <h1 className="report-heading">Report</h1>
             </div>
             <div className="report-content">
                     {firstMonth.length === 0 ? null : (

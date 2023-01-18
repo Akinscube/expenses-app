@@ -15,6 +15,7 @@ import { FirebaseError } from "firebase/app"
 import { collection, getDocs, query, where, addDoc } from "firebase/firestore"
 import { emptyExpensesSuccess, updateExpensesSuccess } from "../../duck/expenses";
 import { sendEmail } from "../../send-grid";
+import { updateBudgetSuccess } from "../../duck/budget";
 
 const auth = getAuth(app);
 
@@ -47,6 +48,19 @@ export const handleLogin = (dispatch, navigate) => async(e, email, password, use
             })
                 dispatch(updateExpensesSuccess(userExpenses))
                 await navigate('/dashboard')
+
+            setTimeout(async() => {
+                const trx = query(collection(db, "Users-Budgets"), where("uid", "==", popup.user.uid))
+                const querySnapshot = await getDocs(trx)
+                let userBudget
+                querySnapshot.forEach(doc => {
+                userBudget = { ...doc.data()}
+                })
+                if(userBudget) {
+                    dispatch(updateBudgetSuccess(userBudget))
+                }
+                return
+            }, 100);
                 
             }, 100);
             
@@ -63,7 +77,7 @@ export const handleLogin = (dispatch, navigate) => async(e, email, password, use
 }
 
 
-export const handleSignup = (dispatch) => async(e, email, password, nickname, userStatus) => {
+export const handleSignup = (dispatch, navigate) => async(e, email, password, nickname, userStatus) => {
     e.preventDefault()
     dispatch(userActions.userRegistration)
     let code = {}
@@ -86,6 +100,7 @@ export const handleSignup = (dispatch) => async(e, email, password, nickname, us
                 email
             })
             await sendEmailVerification(popup.user)
+            await navigate('/')
             
             return
           }

@@ -4,7 +4,7 @@
 }
 
 
-.expenses-btn, .report-btn {
+.expenses-btn, .report-btn, .budget-btn {
     /* margin: 40px auto; */
     height: 40px;
     width: calc(100% - 100px);
@@ -22,7 +22,7 @@
     color: #7d8b8f;
 }
 
-.expenses-icon, .report-icon {
+.expenses-icon, .report-icon, .budget-icon {
     fill: #7d8b8f;
 }
 
@@ -57,26 +57,42 @@
 }
 
 
+.budget-tab {
+    margin-left: 30px;
+}
+
+.budget-btn:hover .budget-icon  {
+    fill: #00dda3;
+    transition: 400ms all;
+}
+
+.budget-btn:hover  {
+    /* font-weight: 800; */
+    color: #fff;
+    transition: 400ms all;
+}
+
+
 
 
 @media (max-width: 1200px) {
-    .report-tab, .expenses-tab {
+    .report-tab, .expenses-tab, .budget-tab {
         display: none;
     }
 
-    .report-btn, .expenses-btn {
+    .report-btn, .expenses-btn, .budget-btn {
         padding: 20px;
         justify-content: center;
         width: auto;
     }
     .expenses-btn{
-        margin-top: 127px;
+        margin-top: 100px;
     }
 }
 
 
 @media (max-width: 899px) {
-    .expenses-btn, .report-btn {
+    .expenses-btn, .report-btn, .budget-btn {
         /* margin: 40px auto; */
         height: 40px;
         width: calc(100% - 100px);
@@ -94,7 +110,7 @@
         color: #7d8b8f;
     }
     
-    .expenses-icon, .report-icon {
+    .expenses-icon, .report-icon, .budget.icon {
         fill: #7d8b8f;
     }
     
@@ -118,6 +134,7 @@
         margin-left: 30px;
         display: block;
     }
+
     
     .report-btn:hover .report-icon  {
         fill: #00dda3;
@@ -125,6 +142,22 @@
     }
     
     .report-btn:hover  {
+        /* font-weight: 800; */
+        color: #fff;
+        transition: 400ms all;
+    }
+
+    .budget-tab {
+        margin-left: 30px;
+        display: block;
+    }
+
+    .budget-btn:hover .budget-icon  {
+        fill: #00dda3;
+        transition: 400ms all;
+    }
+    
+    .budget-btn:hover  {
         /* font-weight: 800; */
         color: #fff;
         transition: 400ms all;

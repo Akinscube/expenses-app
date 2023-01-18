@@ -6,10 +6,12 @@ import { useState } from "react";
 import Report from "../components/report/report";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
+import Budget from "../components/budget/budget";
 
 const ExpensesPage = () => {
   const [showExpenses, setShowExpenses] = useState(true);
   const [showReport, setShowReport] = useState(false);
+  const [showBudget, setShowBudget] = useState(false);
   const [isSidebar, setIsSidebar] = useState(false);
 
   const showSidebar = () => setIsSidebar(!isSidebar);
@@ -20,11 +22,22 @@ const ExpensesPage = () => {
   const handleReport = () => {
     setShowReport(true);
     setShowExpenses(false);
+    setShowBudget(false);
+    setIsSidebar(false)
   };
 
   const handleExpenses = () => {
     setShowReport(false);
     setShowExpenses(true);
+    setShowBudget(false);
+    setIsSidebar(false)
+  };
+
+  const handleBudget = () => {
+    setShowReport(false);
+    setShowExpenses(false);
+    setShowBudget(true);
+    setIsSidebar(false)
   };
 
   return (
@@ -43,14 +56,16 @@ const ExpensesPage = () => {
           isSidebar={isSidebar}
           handleExpenses={handleExpenses}
           handleReport={handleReport}
+          handleBudget={handleBudget}
         />
       ) : null}
       <ExpensesSidebar
         handleExpenses={handleExpenses}
         handleReport={handleReport}
+        handleBudget={handleBudget}
       />
 
-      {showExpenses ? <Expenses /> : showReport ? <Report /> : null}
+      {showExpenses ? <Expenses /> : showReport ? <Report /> : showBudget ? <Budget /> : null}
     </div>
   );
 };

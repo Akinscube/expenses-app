@@ -1,4 +1,4 @@
-.report{
+.budget{
     flex: 1 0 auto;
     display: flex;
     flex-direction: column;
@@ -11,7 +11,7 @@
     background-color: #fff;
 }
 
-.report-header {
+.budget-header {
     display: flex;
     flex: 0 0 auto;
     background-color: #fff;
@@ -26,13 +26,8 @@
     font-weight: 800;
 }
 
-.empty-report {
-    color: #7d8b8f;
-    font-size: 14px;
-}
 
-
-.report-content {
+.budget-content {
     max-height: calc(100vh - 80px);
     box-sizing: border-box;
     padding: 24px;
@@ -41,7 +36,7 @@
     outline: none;
 }
 
-.report-footer {
+.budget-footer {
     display: flex;
     flex: 0 0 auto;
     border-top: 1px solid #ebebeb;
@@ -52,17 +47,73 @@
     justify-content:flex-end;
 }   
 
-.report-footer-logo {
+.budget-footer-logo {
     height: 16px;
     
 }
 
+.budget-form-input {
+    max-width: 50%;
+    margin: 30px auto;
+}
+
+.budget-input {
+    padding: 10px 20px;
+    width: 50%;
+    max-width: 100%;
+    margin: 10px auto;
+    border-radius: 10px;
+    text-align: center;
+    display: block;
+    border: 1px solid rgb(201, 201, 201);
+}
+
+.budget-input::placeholder {
+    text-align: center;
+}
+
+.budget-input-btn {
+    width: 70px;
+    padding: 10px 6px;
+    border: none;
+    border-radius: 10px;
+    background: #65e1c0;
+}
+
+.choose-budget {
+    margin-bottom: 0;
+}
+
+.sub-text {
+    margin: 4px 0 30px;
+    font-size: 0.8rem; 
+    color: #616161;
+}
+
+.current-budget {
+    margin: 40px auto;
+    max-width: 40%;
+    color: #616161 ;
+}
+
+.current-budget-subtext {
+    margin-top: 0px;
+    font-size: 0.8rem;
+}
+
+.red-text {
+    color: firebrick;
+}
+
+.yellow-text {
+    color: #b29d00;
+}
 
 @media (max-width: 899px) {
-    .report-heading {
+    .budget-heading {
         margin-left: 20px;
     }
-    .report{
+    .budget{
         max-width: 100vw;
     }
 }

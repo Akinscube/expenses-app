@@ -9,7 +9,7 @@ import ExpensesNavbar from "../navbar/expenses-navbar";
 
 
 const ExpensesSidebar = (props) => {
-    const { isSidebar, handleReport, handleExpenses } = props
+    const { isSidebar, handleBudget, handleReport, handleExpenses } = props
     const [input, handleInputChange, setInput] = useInputChange();
 
     const navigate = useNavigate()
@@ -28,7 +28,7 @@ const ExpensesSidebar = (props) => {
                 <div className="expenses-sidebar-actions">
                     <div className="expenses-inner-action-wrapper">
                         
-                        <ExpensesNavbar handleExpenses={handleExpenses} handleReport={handleReport} />
+                        <ExpensesNavbar handleBudget={handleBudget} handleExpenses={handleExpenses} handleReport={handleReport} />
                     </div>
                     
                 </div>

@@ -16,6 +16,11 @@ const Expenses = () => {
     const expensesStatus = useSelector(state => state.expenses.expensesStatus)
     const expenses = expensesStatus.expenses
 
+    const budgetStatus = useSelector(state => state.budget.budgetStatus)
+
+    const budget = budgetStatus?.budget?.currentBudget[budgetStatus.budget.currentBudget.length -1]?.budget
+    const budgetMonth = budgetStatus?.budget?.currentBudget[budgetStatus.budget.currentBudget.length -1]?.date
+
     // console.log(expenses)
 
     const dispatch = useDispatch()
@@ -27,9 +32,17 @@ const Expenses = () => {
 
     const toggleModal = () => setIsOpen(!isOpen);
 
-    const currentMonthExpenses = expenses.filter(expense => new Date(expense.date).getMonth())
+
+    const sortedExpenses = expenses.slice().sort((a, b) => {
+        if(a.date < b.date) return -1;
+        if(a.date > b.date) return 1;
+        return 0;
+    }) 
+
+
+    const currentMonthExpenses = sortedExpenses.filter(expense => new Date(expense.date).getMonth() +1 === new Date().getMonth() +1 ) 
     
-    const expensesArray = expenses.map(expense => +expense.amount)
+    const expensesArray = currentMonthExpenses.map(expense => +expense.amount)
     let totalMonthExpenses = 0
     let i=0;
     while(i <= (expensesArray.length - 1)){
@@ -38,11 +51,8 @@ const Expenses = () => {
         i++;
     }
 
-    const sortedExpenses = expenses.slice().sort((a, b) => {
-        if(a.date < b.date) return -1;
-        if(a.date > b.date) return 1;
-        return 0;
-    }) 
+    const budget70 = (((totalMonthExpenses / budget)*100) >= 70)
+    const overBudget = (totalMonthExpenses > budget)
 
 
 
@@ -65,7 +75,7 @@ const Expenses = () => {
                 </div>
             <div className="expenses-content">
             
-                {sortedExpenses.map(expense => (
+                {currentMonthExpenses.map(expense => (
                     <Expense toggleModal={toggleModal} key={expense.expenseId} id={expense.expenseId} date={expense.date} title={expense.title} amount={expense.amount} />
                 ))}
                 {Object.keys(sortedExpenses).length === 0 ? (<p className="empty-content">You have no expenses yet for {new Date().toLocaleString("en-us", {month: "long"} )}.</p>) : null}
@@ -73,7 +83,7 @@ const Expenses = () => {
 
             <div className="expenses-footer">
             <div>
-                    <h5>Total {new Date().toLocaleString("en-us", {month: "long"} )} Expenses: ₦{totalMonthExpenses.toLocaleString("en")}</h5>
+                    <h5>Total {new Date().toLocaleString("en-us", {month: "long"} )} Expenses: <span className={overBudget? "red-expenses" : budget70? "yellow-expenses" : null}> ₦{totalMonthExpenses.toLocaleString("en")}</span></h5>
                 </div>
                 <img className="expenses-footer-logo" src={require("../../assets/images/full-logo.png")} alt="" />
             </div>  

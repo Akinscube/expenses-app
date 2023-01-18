@@ -56,8 +56,9 @@
 
 
 .name-section {
-    margin-top: 40px;
-    flex: 0 0 auto;
+    margin: 40px 0 0 50px;
+    flex: 0 0 auto; 
+    text-align: left;
     color: #fff     
 }
 

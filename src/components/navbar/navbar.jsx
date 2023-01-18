@@ -11,7 +11,7 @@ const Navbar = (props) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const customSignupHook = handleSignup(dispatch)
+  const customSignupHook = handleSignup(dispatch, navigate)
   const customLoginHook = handleLogin(dispatch, navigate )
 
 

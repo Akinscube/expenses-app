@@ -13,7 +13,7 @@ const userSlice = createSlice({
         userRegistrationSuccess: (state, action) => {
             state.userStatus.loading = false
             state.userStatus.user = action.payload.user
-            state.userStatus.code = ""
+            state.userStatus.code = "auth/signup-successful"
         },
         userRegistrationFailed: (state, action) => {
             state.userStatus.loading = false
