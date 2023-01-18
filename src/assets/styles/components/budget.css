@@ -106,10 +106,12 @@
 
 .red-text {
     color: firebrick;
+    font-weight: 500;
 }
 
 .yellow-text {
     color: #b29d00;
+    font-weight: 500px;
 }
 
 @media (max-width: 899px) {

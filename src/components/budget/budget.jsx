@@ -86,7 +86,7 @@ const Budget = () => {
       {budgetMonth === currentMonth ? budget? (
         <div className="current-budget">
             <h5>Your Budget for {new Date().toLocaleString("en", {month:"long"})} is: ₦{parseFloat(budget).toLocaleString('en')} </h5>
-            <p className="current-budget-subtext">Your total expenses for {new Date().toLocaleString("en", {month:"long"})} will turn <span className="yellow-text"> yellow </span> when it reach 70% of your Budget and <span className="red-text">red</span> when has gone over your budget  </p>
+            <p className="current-budget-subtext">Your total expenses for {new Date().toLocaleString("en", {month:"long"})} will turn <span className="yellow-text"> yellow </span> when it reaches 70% of your Budget and <span className="red-text">red</span> when has gone over your budget  </p>
         </div>
       ) : null : null}
             </div>
