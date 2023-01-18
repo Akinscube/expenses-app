@@ -82,17 +82,20 @@
 
 .choose-budget {
     margin-bottom: 0;
+    max-width: 70%;
+    margin: 0 auto;
 }
 
 .sub-text {
-    margin: 4px 0 30px;
+    margin: 4px auto 30px;
     font-size: 0.8rem; 
+    max-width: 70%;
     color: #616161;
 }
 
 .current-budget {
     margin: 40px auto;
-    max-width: 40%;
+    max-width: 50%;
     color: #616161 ;
 }
 

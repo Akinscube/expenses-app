@@ -82,8 +82,8 @@ const Expenses = () => {
             </div>
 
             <div className="expenses-footer">
-            <div>
-                    <h5>Total {new Date().toLocaleString("en-us", {month: "long"} )} Expenses: <span className={overBudget? "red-expenses" : budget70? "yellow-expenses" : null}> ₦{totalMonthExpenses.toLocaleString("en")}</span></h5>
+            <div className="total-expenses-text">
+                    <h5 >Total {new Date().toLocaleString("en-us", {month: "long"} )} Expenses: <span className={overBudget? "red-expenses" : budget70? "yellow-expenses" : null}> ₦{totalMonthExpenses.toLocaleString("en")}</span></h5>
                 </div>
                 <img className="expenses-footer-logo" src={require("../../assets/images/full-logo.png")} alt="" />
             </div>  
