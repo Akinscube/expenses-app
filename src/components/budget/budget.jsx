@@ -13,11 +13,17 @@ const Budget = () => {
     const userStatus = useSelector(state => state.auth.userStatus)
     const budgetStatus = useSelector(state => state.budget.budgetStatus)
 
-    const budgetType = budgetStatus?.budget?.budgetType
-    const budget = budgetStatus?.budget?.currentBudget[budgetStatus.budget.currentBudget.length -1]?.budget
-    const budgetMonth = budgetStatus?.budget?.currentBudget[budgetStatus.budget.currentBudget.length -1]?.date
-    const activeUser = userStatus.user
 
+    let budgetType
+    let budget
+    let budgetMonth
+    if(Object.keys(budgetStatus.budget).length !== 0){
+     budgetType = budgetStatus?.budget?.budgetType
+     budget = budgetStatus?.budget?.currentBudget[budgetStatus.budget.currentBudget.length -1]?.budget
+     budgetMonth = budgetStatus?.budget?.currentBudget[budgetStatus.budget.currentBudget.length -1]?.date
+    }
+    const activeUser = userStatus.user
+    console.log(budget)
     
 
     const customBudgetHook = handleSaveBudget(dispatch)

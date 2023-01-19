@@ -15,7 +15,7 @@ import { FirebaseError } from "firebase/app"
 import { collection, getDocs, query, where, addDoc } from "firebase/firestore"
 import { emptyExpensesSuccess, updateExpensesSuccess } from "../../duck/expenses";
 import { sendEmail } from "../../send-grid";
-import { updateBudgetSuccess } from "../../duck/budget";
+import { emptyBudgetSuccess, updateBudgetSuccess } from "../../duck/budget";
 
 const auth = getAuth(app);
 
@@ -35,9 +35,9 @@ export const handleLogin = (dispatch, navigate) => async(e, email, password, use
             querySnapshot.forEach(doc => {
                 userData = { ...doc.data() }
             })
-            console.log(userData.nickname)
+            console.log(userData.nameInput)
             setTimeout(async() =>  {
-            dispatch(userActions.userLoginSuccess({...userStatus, user: popup.user, userNickname: userData.nickname}))
+            dispatch(userActions.userLoginSuccess({...userStatus, user: popup.user, userNameInput: userData.name, userType: userData.userType}))
         
             const trx = query(collection(db, "Users-Expenses"), where("uid", "==", popup.user.uid))
             const querySnapshot = await getDocs(trx)
@@ -77,7 +77,7 @@ export const handleLogin = (dispatch, navigate) => async(e, email, password, use
 }
 
 
-export const handleSignup = (dispatch, navigate) => async(e, email, password, nickname, userStatus) => {
+export const handleSignup = (dispatch, navigate) => async(e, email, password, nameInput, userType, userStatus, setIsRegister) => {
     e.preventDefault()
     dispatch(userActions.userRegistration)
     let code = {}
@@ -95,12 +95,14 @@ export const handleSignup = (dispatch, navigate) => async(e, email, password, ni
             dispatch(userActions.userRegistrationSuccess({...userStatus, user: popup.user}))
             await addDoc(collection(db, "users"), {
                 uid: popup.user.uid,
-                nickname,
+                name: nameInput,
+                userType,
                 authProvider: "local",
                 email
             })
             await sendEmailVerification(popup.user)
             await navigate('/')
+            setIsRegister(false)
             
             return
           }
@@ -122,6 +124,7 @@ export const handleSignOut = (dispatch, navigate) =>  async() => {
         const popup = await signOut(auth)
         dispatch(userSignOutSuccess())
         dispatch(emptyExpensesSuccess())
+        dispatch(emptyBudgetSuccess())
         await navigate('/')
         return popup
     } catch (error) {

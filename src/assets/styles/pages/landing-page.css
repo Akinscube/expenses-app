@@ -27,7 +27,7 @@
     left: 80px;
     font-size: 3.5rem;
     top: 40px;
-    max-width: 500px;
+    max-width: 700px;
     background-clip: text;
     color: transparent;
     background-image:  linear-gradient(140deg, #34357b 0%, #a9ffe8 100% );
@@ -47,9 +47,9 @@
 }
 
 .hero-image {
-    width: 37em;
+    width: 45em;
     opacity: 80%;
-    margin: 365px 0 0 440px;
+    margin: 265px 0 0 340px;
 }
 
 .notification {

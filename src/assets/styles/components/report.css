@@ -57,6 +57,39 @@
     
 }
 
+.month-expenses {
+    border: 2px solid #c6c6c664;
+    padding: 30px;
+    border-radius: 10px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.month-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    padding: 1px 0;
+    color: #fff;
+    max-width: 100px;
+    background: #3a937b;
+}
+
+.total-month-expenses {
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: right;
+    float: right;
+    background: #7d8b8f;
+    max-width: 300px;
+    padding: 3px 10px;
+    color: #fff;
+    border-radius: 5px;
+    
+}
+
 
 @media (max-width: 899px) {
     .report-heading {

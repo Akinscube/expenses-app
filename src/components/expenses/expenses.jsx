@@ -13,21 +13,29 @@ import { useInputChange } from "../../custom-hook/useform";
 
 const Expenses = () => {
 
+    const [input, handleInputChange, setInput] = useInputChange();
+    const [isDisabled, setIsDisabled] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
+    
+
     const expensesStatus = useSelector(state => state.expenses.expensesStatus)
     const expenses = expensesStatus.expenses
 
     const budgetStatus = useSelector(state => state.budget.budgetStatus)
+    
+    let budget 
+    let budgetMonth
 
-    const budget = budgetStatus?.budget?.currentBudget[budgetStatus.budget.currentBudget.length -1]?.budget
-    const budgetMonth = budgetStatus?.budget?.currentBudget[budgetStatus.budget.currentBudget.length -1]?.date
-
+    if(Object.keys(budgetStatus.budget).length !== 0) {
+     budget = budgetStatus?.budget?.currentBudget[(budgetStatus.budget.currentBudget).length -1]?.budget 
+     budgetMonth = budgetStatus?.budget?.currentBudget[budgetStatus.budget.currentBudget.length -1]?.date
+    }
     // console.log(expenses)
 
     const dispatch = useDispatch()
 
-    const [input, handleInputChange, setInput] = useInputChange();
-    const [isDisabled, setIsDisabled] = useState(true);
-    const [isOpen, setIsOpen] = useState(false);
+    
+
   
 
     const toggleModal = () => setIsOpen(!isOpen);
@@ -53,6 +61,8 @@ const Expenses = () => {
 
     const budget70 = (((totalMonthExpenses / budget)*100) >= 70)
     const overBudget = (totalMonthExpenses > budget)
+
+    console.log(budget70, overBudget)
 
 
 

@@ -35,6 +35,7 @@ const Navbar = (props) => {
 
   const toggleRegister = () => {
     setIsRegister(!isRegister)
+    setInput({})
   }
 
   
@@ -95,21 +96,37 @@ const Navbar = (props) => {
             
             <div className="login-register-actions">
                 <button onClick={toggleLogin}className="cancel-btn" type="submit">Cancel</button>
-                <button className="next-btn" ref={submitButtonRef} onClick={(e) => customLoginHook(e, input.email, input.password, userStatus)} type="submit">Next</button>
+                <button className="next-btn" ref={submitButtonRef} onClick={(e) => customLoginHook(e, input.email, input.password, userStatus)} type="submit">Login</button>
             </div>
           </form>
         </div>
         ) : isRegister ? (
         <div className="register-form">
           <form onKeyDown={handleSubmit}>
-            <input type="text" placeholder="Nickname" onChange={handleInputChange} className="nickname-input" name="nickname"  required/>
-            <input type="email" className="email-input" onChange={handleInputChange} name="email" required placeholder="Email"/>
-            <input type="password" className="password-input" onChange={handleInputChange} name="password" placeholder="Password" required />
+            <select name="userType" defaultValue={""} onChange={handleInputChange} className="type-input" required>
+              <option disabled  className="faded-option" value="">Select User Type</option>
+              <option  value="individual">Individual</option>
+              <option value="familyGroup">Family / Group</option>
+              <option value="company">Company</option>
+            </select>
+            {input.userType ? (
+              <div>
+                <input type="text" placeholder={(input.userType === "company") ? "Company Name" : (input.userType === "familyGroup") ? "Family / Group Name" : "Nickname"} onChange={handleInputChange} className="nickname-input" name="nameInput"  required/>
+                <input type="email" className="email-input" onChange={handleInputChange} name="email" required placeholder="Email"/>
+                <input type="password" className="password-input" onChange={handleInputChange} name="password" placeholder="Password" required />
+                <input type="password" className={(input.password !== input.password2)? "password-input error-input" : "password-input"} onChange={handleInputChange} name="password2" placeholder="Password" required />
+                {input.password !== input.password2 ? (<p className="error-text">password does not match</p>) :null}
+              </div>
+            ) : null}
+                <div className="login-register-actions">
+                  <button onClick={toggleRegister} className="cancel-btn" type="submit">Cancel</button>
+                  {input.userType ? (<button className="next-btn"  ref={submitButtonRef} onClick={(e) => customSignupHook(e, input.email, input.password, input.nameInput, input.userType, userStatus, setIsRegister)} type="submit">Register</button>) : null}
+                </div>
+              
 
-            <div className="login-register-actions">
-                <button onClick={toggleRegister} className="cancel-btn" type="submit">Cancel</button>
-                <button className="next-btn"  ref={submitButtonRef} onClick={(e) => customSignupHook(e, input.email, input.password, input.nickname, userStatus)} type="submit">Next</button>
-            </div>
+            
+
+            
           </form>
         </div>
         ) : null}

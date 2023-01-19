@@ -52,11 +52,11 @@ import {
             dispatch(updateBudgetSuccess(fetchedBudget))
             return
         }else {
-            const saveBudget = userBudget.budget
+            const saveBudget = userBudget.currentBudget
             if((saveBudget[saveBudget.length -1]).date === new Date().toLocaleString("en", {month: "short", year: "numeric"}) ) {
                 saveBudget.pop()
                 saveBudget.push({date: new Date().toLocaleString("en", {month: "short", year: "numeric"}), budget: budget})
-                await setDoc(userBudget.budgetId, {
+                await setDoc(userBudget.budgetRef, {
                     currentBudget: saveBudget
                 }, { merge: true })
                 const fetchedBudget = await getBudgetTrx(uid)
@@ -66,7 +66,7 @@ import {
                 if(saveBudget.length -1 === 6){
                     saveBudget.shift();
                     saveBudget.push({date: new Date().toLocaleString("en", {month: "short", year: "numeric"}), budget: budget})
-                    await setDoc(userBudget.budgetId, {
+                    await setDoc(userBudget.budgetRef, {
                         currentBudget: saveBudget
                     }, { merge: true })
                     const fetchedBudget = await getBudgetTrx(uid)
@@ -74,7 +74,7 @@ import {
                     return
                 }else {
                     saveBudget.push({date: new Date().toLocaleString("en", {month: "short", year: "numeric"}), budget: budget})
-                    await setDoc(userBudget.budgetId, {
+                    await setDoc(userBudget.budgetRef, {
                         currentBudget: saveBudget
                     }, { merge: true })
                     const fetchedBudget = await getBudgetTrx(uid)

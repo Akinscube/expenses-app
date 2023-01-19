@@ -21,25 +21,32 @@ const Report = () => {
         return 0;
     }) 
 
+    console.log(new Date(2021, 10, 15, 12, 31).getTime())
+    
+  
+
+    console.log(sortedExpenses.map(expense => (
+        (new Date(expense.date).getMonth() +1)
+    )), ((new Date().getMonth() - 5 +13) %13))
 
     const firstMonth = sortedExpenses.filter(expense => (
-        (new Date(expense.date).getMonth() +1) === (new Date().getMonth() - 4)
+        (new Date(expense.date).getMonth() +1) === ((new Date().getMonth() - 5 +13) %13)
     ))
 
     const secondMonth = sortedExpenses.filter(expense => (
-        new Date(expense.date).getMonth() +1 === new Date().getMonth() - 3
+        new Date(expense.date).getMonth() +1 === ((new Date().getMonth() - 4 +13) %13)
     ))
 
     const thirdMonth = sortedExpenses.filter(expense => (
-        new Date(expense.date).getMonth() +1 === new Date().getMonth() - 2
+        new Date(expense.date).getMonth() +1 === ((new Date().getMonth() - 3 +13) %13)
     ))
 
     const fourthMonth = sortedExpenses.filter(expense => (
-        new Date(expense.date).getMonth() +1 === new Date().getMonth() - 1
+        new Date(expense.date).getMonth() +1 === ((new Date().getMonth() - 2 +13) %13)
     ))
 
     const fifthMonth = sortedExpenses.filter(expense => (
-        new Date(expense.date).getMonth() +1 === new Date().getMonth()
+        new Date(expense.date).getMonth() +1 === ((new Date().getMonth() - 1 +13) %13)
     ))
 
     
@@ -90,7 +97,7 @@ const Report = () => {
         fifth++;
     }
 
-    const isLastFiveMonths = sortedExpenses.filter(expense => (new Date(expense.date).getMonth() +1 > new Date().getMonth() - 3)  && (new Date(expense.date).getMonth() +1 < new Date().getMonth() +1))
+    const isLastFiveMonths = sortedExpenses.filter(expense => (new Date(expense.date).getMonth() +1 > ((new Date().getMonth() - 4 +13) %13))  || (new Date(expense.date).getMonth() +1 < ((new Date().getMonth() - 2 +13) %13)))
     console.log(isLastFiveMonths)
 
 
@@ -102,45 +109,45 @@ const Report = () => {
             <div className="report-content">
                     {firstMonth.length === 0 ? null : (
                         <div className="month-expenses">
-                        <div>{new Date(firstMonth[0].date).toLocaleString("en-us", {month: "long"})}</div>
+                        <div className="month-name">{new Date(firstMonth[0].date).toLocaleString("en-us", {month: "long"})}</div>
                         {firstMonth.map(expense => (
-                            <Expense key={expense.expenseId} id={expense.expenseId} date={expense.date} title={expense.title} amount={expense.amount} />
+                            <Expense key={expense.expenseId} id={expense.expenseId} date={expense.date} title={expense.title} amount={expense.amount} disable={"disable"} />
                         ))}
                     <div className="total-month-expenses">Total Expenses: ₦{firstTotalExpenses.toLocaleString("en")}</div>
                     </div>
                     )}
                     {secondMonth.length === 0 ? null : (
                         <div className="month-expenses">
-                        <div>{new Date(secondMonth[0].date).toLocaleString("en-us", {month: "long"})}</div>
+                        <div className="month-name">{new Date(secondMonth[0].date).toLocaleString("en-us", {month: "long"})}</div>
                         {secondMonth.map(expense => (
-                            <Expense key={expense.expenseId} id={expense.expenseId} date={expense.date} title={expense.title} amount={expense.amount} />
+                            <Expense key={expense.expenseId} id={expense.expenseId} date={expense.date} title={expense.title} amount={expense.amount} disable={"disable"} />
                         ))}
                     <div className="total-month-expenses">Total Expenses: ₦{secondTotalExpenses.toLocaleString("en")}</div>
                     </div>
                     )}
                     {thirdMonth.length === 0 ? null : (
                         <div className="month-expenses">
-                        <div>{new Date(thirdMonth[0].date).toLocaleString("en-us", {month: "long"})}</div>
+                        <div className="month-name">{new Date(thirdMonth[0].date).toLocaleString("en-us", {month: "long"})}</div>
                         {thirdMonth?.map(expense => (
-                            <Expense key={expense.expenseId} id={expense.expenseId} date={expense.date} title={expense.title} amount={expense.amount} />
+                            <Expense key={expense.expenseId} id={expense.expenseId} date={expense.date} title={expense.title} amount={expense.amount} disable={"disable"} />
                         ))}
                     <div className="total-month-expenses">Total Expenses: ₦{thirdTotalExpenses.toLocaleString("en")}</div>
                     </div>
                     )}
                     {fourthMonth.length === 0 ? null : (
                         <div className="month-expenses">
-                        <div>{new Date(fourthMonth[0].date).toLocaleString("en-us", {month: "long"})}</div>
+                        <div className="month-name">{new Date(fourthMonth[0].date).toLocaleString("en-us", {month: "long"})}</div>
                         {fourthMonth?.map(expense => (
-                            <Expense key={expense.expenseId} id={expense.expenseId} date={expense.date} title={expense.title} amount={expense.amount} />
+                            <Expense key={expense.expenseId} id={expense.expenseId} date={expense.date} title={expense.title} amount={expense.amount} disable={"disable"} />
                         ))}
                     <div className="total-month-expenses">Total Expenses: ₦{fourthTotalExpenses.toLocaleString("en")}</div>
                     </div>
                     )}
                     {fifthMonth.length === 0 ? null : (
                         <div className="month-expenses">
-                        <div>{new Date(fifthMonth[0].date).toLocaleString("en-us", {month: "long"})}</div>
+                        <div className="month-name">{new Date(fifthMonth[0].date).toLocaleString("en-us", {month: "long"})}</div>
                         {fifthMonth?.map(expense => (
-                            <Expense key={expense.expenseId} id={expense.expenseId} date={expense.date} title={expense.title} amount={expense.amount} />
+                            <Expense key={expense.expenseId} id={expense.expenseId} date={expense.date} title={expense.title} amount={expense.amount} disable={"disable"} />
                         ))}
                     <div className="total-month-expenses">Total Expenses: ₦{fifthTotalExpenses.toLocaleString("en")}</div>
                     </div>

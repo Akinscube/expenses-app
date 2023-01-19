@@ -1,6 +1,7 @@
 .navbar {
     margin: 30px auto 0;
     text-align: center;
+    position: relative;
 }
 
 
@@ -38,7 +39,7 @@
 }
 
 .email-input, .password-input, .nickname-input {
-    margin: 20px auto;
+    margin: 25px auto;
     height: 20px;
     border-top: none;
     border-left: none;
@@ -56,11 +57,43 @@
     color: #fff;
 }
 
+.type-input {
+    appearance: none;
+    margin: 20px auto;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #7ee8cc;
+    border-radius: 12px;
+    width: 270px;
+    padding: 13px 15px;
+    text-align: left;
+    font-size: 13px;  
+    display: block;
+    background-color: transparent;
+    outline: none;
+    caret-color: #7ee8cc ;
+    color: #fff;
+}
+
+.error-input {
+    border-bottom: 1px solid red;
+}
+
+.error-text {
+    position: absolute;
+    color: red;
+    left: 10px;
+    bottom: 47px;
+    font-size: 0.7rem;
+}
+
+
 .login-register-actions {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 40px;
 }
 
 .cancel-btn {

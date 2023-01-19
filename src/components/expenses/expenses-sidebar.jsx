@@ -16,13 +16,13 @@ const ExpensesSidebar = (props) => {
     const dispatch = useDispatch()
     const customSignOutHook = handleSignOut(dispatch, navigate)
     const userStatus = useSelector(state => state.auth.userStatus)
-
-    console.log(userStatus.userNickname)
+    
+    console.log(userStatus.userNameInput)
     return (
         <div className={isSidebar? "expenses-sidebar show" :"expenses-sidebar"}>
             <div className="expenses-sidebar-inner-wrapper">
                 <div className="name-section">
-                    <h3>Hi, {userStatus.userNickname}</h3>
+                    {(userStatus.userType === "individual") ? (<h3>Hi, {userStatus.userNameInput}</h3>) : (userStatus.userType === "familyGroup")? (<h3>{userStatus.userNameInput.toUpperCase()}s</h3>) : (<h3>{userStatus.userNameInput}</h3>)}
                 </div>
 
                 <div className="expenses-sidebar-actions">

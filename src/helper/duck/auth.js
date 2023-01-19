@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
-const initialState = { userStatus: { loading: false, user: {}, userNickname:"", code: ""} }
+const initialState = { userStatus: { loading: false, user: {}, userNameInput:"", userType: "", code: ""} }
 
 const userSlice = createSlice({
     name: "auth",
@@ -26,7 +26,8 @@ const userSlice = createSlice({
         userLoginSuccess: (state, action) => {
             state.userStatus.loading = false
             state.userStatus.user = action.payload.user
-            state.userStatus.userNickname = action.payload.userNickname
+            state.userStatus.userNameInput = action.payload.userNameInput
+            state.userStatus.userType = action.payload.userType
             state.userStatus.code = "auth/Login-Successful"
         },
         userLoginFailed: (state, action) => {
@@ -38,7 +39,8 @@ const userSlice = createSlice({
             state.userStatus.loading = false
             state.userStatus.user = null
             state.userStatus.code = "auth/SignOut-Successful"
-            state.userStatus.userNickname = ""
+            state.userStatus.userNameInput = ""
+            state.userStatus.userType = ""
         },
         userSignOutFailed: (state, action) => {
             state.userStatus.loading = false

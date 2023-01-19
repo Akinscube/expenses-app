@@ -3,7 +3,7 @@ import { deleteExpense } from "../../helper/firebase/transactions/expenses";
 import { useDispatch, useSelector } from "react-redux";
 
 const Expense = (props) => {
-  const { date, id, title, amount, toggleModal } = props;
+  const { date, id, title, amount, disable, toggleModal } = props;
 
   const dispatch = useDispatch();
   const userStatus = useSelector((state) => state.auth.userStatus);
@@ -46,7 +46,8 @@ const Expense = (props) => {
         </div>
         <div className="expense-actions">
           {/* <button className="expense-edit" onClick={toggleModal}>edit</button> */}
-          <div
+          {disable ? null : (
+            <div
             className="expense-delete"
             
           >
@@ -94,6 +95,8 @@ const Expense = (props) => {
               </g>
             </svg>
           </div>
+          )}
+          
           {/* <button  >delete</button> */}
         </div>
       </div>
