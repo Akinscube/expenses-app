@@ -81,10 +81,10 @@
 }
 
 .error-text {
-    position: absolute;
+    position: relative;
     color: red;
-    left: 10px;
-    bottom: 47px;
+    margin-top: -8%;
+    margin: -23px auto 10px;
     font-size: 0.7rem;
 }
 

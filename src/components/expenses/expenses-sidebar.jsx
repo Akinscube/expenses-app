@@ -9,7 +9,7 @@ import ExpensesNavbar from "../navbar/expenses-navbar";
 
 
 const ExpensesSidebar = (props) => {
-    const { isSidebar, showBudget, showExpenses, showReport, handleBudget, handleReport, handleExpenses } = props
+    const { isSidebar, showBudget, showExpenses, showReport, handleBudget, handleReport, handleExpenses, smScreen } = props
     const [input, handleInputChange, setInput] = useInputChange();
 
     const navigate = useNavigate()
@@ -19,7 +19,7 @@ const ExpensesSidebar = (props) => {
     
     console.log(userStatus.userNameInput)
     return (
-        <div className={isSidebar? "expenses-sidebar show" :"expenses-sidebar"}>
+        <div className={isSidebar? "expenses-sidebar2 show" : smScreen? "expenses-sidebar2" : "expenses-sidebar"}>
             <div className="expenses-sidebar-inner-wrapper">
                 <div className="name-section">
                     {(userStatus.userType === "individual") ? (<h3>Hi, {userStatus.userNameInput}</h3>) : (userStatus.userType === "familyGroup")? (<h3>{userStatus.userNameInput.toUpperCase()}s</h3>) : (<h3>{userStatus.userNameInput}</h3>)}

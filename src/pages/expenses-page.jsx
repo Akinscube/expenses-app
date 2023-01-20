@@ -23,7 +23,7 @@ const ExpensesPage = () => {
 };
 
 
-
+console.log(isSidebar)
 
 
 
@@ -61,6 +61,7 @@ const ExpensesPage = () => {
       </div>
       {isSidebar ? (
         <ExpensesSidebar
+            smScreen={true}
           isSidebar={isSidebar}
           showBudget={showBudget}
           showExpenses={showExpenses}

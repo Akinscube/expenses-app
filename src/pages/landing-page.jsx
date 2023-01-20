@@ -47,10 +47,14 @@ const LandingPage = () => {
             <div className="hero-section">
                 <div className="hero-inner-wrapper" >
                     <div className="floating-circle"></div>
-                    {/* <img className="landing-logo" src={require("../assets/images/logo.png")} alt="" /> */}
-                    <h1 className="hero-text">Organize your expenses and take control of your finance.</h1>
+                    <div className="text-section">
+                        <h1 className="hero-text">Organize your expenses and take control of your finance.</h1>
+                    </div>
+                    <div className="illustration-section">
+
                     <img className="hero-image" src={require("../assets/images/hero-art.png")} alt="" />
-                    <div className="clear"></div>
+                    </div>
+                    {/* <div className="clear"></div> */}
                 </div>
             </div>
             <div className={`notification ${!showNotification ? 'hide' : ''}`}>{message}</div>

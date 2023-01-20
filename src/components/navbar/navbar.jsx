@@ -113,8 +113,8 @@ const Navbar = (props) => {
               <div>
                 <input type="text" placeholder={(input.userType === "company") ? "Company Name" : (input.userType === "familyGroup") ? "Family / Group Name" : "Nickname"} onChange={handleInputChange} className="nickname-input" name="nameInput"  required/>
                 <input type="email" className="email-input" onChange={handleInputChange} name="email" required placeholder="Email"/>
-                <input type="password" className="password-input" onChange={handleInputChange} name="password" placeholder="Password" required />
-                <input type="password" className={(input.password !== input.password2)? "password-input error-input" : "password-input"} onChange={handleInputChange} name="password2" placeholder="Password" required />
+                <input type="password" className="password-input" onChange={handleInputChange} name="password" placeholder="Password (at least 8 character)" required />
+                <input type="password" className={(input.password !== input.password2)? "password-input error-input" : "password-input"} onChange={handleInputChange} name="password2" placeholder="Confirm Password" required />
                 {input.password !== input.password2 ? (<p className="error-text">password does not match</p>) :null}
               </div>
             ) : null}
